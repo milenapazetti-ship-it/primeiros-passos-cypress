@@ -23,6 +23,12 @@ class LoginPage {
     cy.get(this.selectors.passwordField).type(password)
     cy.get(this.selectors.loginButton).click()
   }
+
+  checkWrongCredentialAlert() {
+    cy.get(this.selectors.wrongCredentialAlert)
+      .should('be.visible')
+      .and('contain.text', 'Invalid credentials')
+  }
 }
 
 export default LoginPage

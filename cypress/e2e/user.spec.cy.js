@@ -14,11 +14,8 @@ Cypress.on('uncaught:exception', (err) => {
 })
 
 describe('Orange HRM Tests', () => {
-  beforeEach(() => {
-    Cypress.on('uncaught:exception', () => false)
-  })
 
-  it.only('User Info Update - Success', () => {
+  it('User Info Update - Success', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithUser(userData.userSuccess.username, userData.userSuccess.password)
     dashboardPage.checkDashboardPage()
@@ -29,11 +26,5 @@ describe('Orange HRM Tests', () => {
     cy.wait(1000)
     myInfoPage.fillStatus()
     myInfoPage.saveForm()
-  })
-
-  it('Login - Fail', () => {
-    loginPage.accessLoginPage()
-    loginPage.loginWith(userData.userFail.username, userData.userFail.password)
-    cy.get(loginPage.selectors.wrongCredentialAlert)
   })
 })
